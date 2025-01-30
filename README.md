@@ -4,71 +4,64 @@ Bu oyun bir tıklama oyunudur ve her tıkladığınızda kek yaparsınız!Yaptı
 
 Bu projede HTML, CSS ve JavaScript kullanılmıştır.
 
-# 🎮 Oyun Mekanikleri
+#  Oyun Mekanikleri
 
-# 📌 Kek Yapma Mekaniği
+# Kek Yapma Mekaniği
 
-Kek yapmak için pasta görseline tıklamanız yeterlidir.
+Kek yapmak için pasta görseline tıklamanız yeterlidir-.
+- Kek artış miktarı: 1 + ustalik
 
-Kek artış miktarı: 1 + ustalik
-
-# 📌 Kek Satma Mekaniği
+# Kek Satma Mekaniği
 
 Keklerinizi yalnızca müşterilere satarak para kazanabilirsiniz.
 
-Müşteri gelme ihtimali: Her keke tıkladığınızda %5 ihtimalle müşteri gelir.
-
-Müşteriler, 8 saniye sonra giderler.
+- Müşteri gelme ihtimali: Her keke tıkladığınızda %5 ihtimalle müşteri gelir.
+- Müşteriler, 8 saniye sonra giderler.
 
 Eğer müşteri sayısı masa sayınızı geçerse, yeni müşteri gelmez.
 
-Kek satış miktarı: satilanKek * 0.5 + vergi
+- Kek satış miktarı: satilanKek * 0.5 + vergi
 
-Müşteri geliş miktarı: Math.floor(Math.random() * (masa - 1 + 1)) + 1
+- Müşteri geliş miktarı: Math.floor(Math.random() * (masa - 1 + 1)) + 1
 
-# ⚡ Yükseltmeler
+# Yükseltmeler
 
 Oyunda 4 farklı yükseltme bulunmaktadır: Kitap, Kardeş, Vergi, MasaHer yükseltmenin kendine özgü bir işlevi ve fiyat artış mekaniği vardır.
 
-# 📚 Kitap Yükseltmesi
+# Kitap Yükseltmesi
 
 Satın aldığınız her kitabı okudukça ustalığınız artar.
-
 2 kitap okuduğunuzda ustalığınız +1 artar ve daha fazla kek yapabilirsiniz.
+- Fiyat artış miktarı: 20 + (20 * okunanKitapSayi)
+  - (okunanKitapSayi okduğunuz kitao sayısına eşittir)
 
-# 👨‍👦 Kardeş Yükseltmesi
+# Kardeş Yükseltmesi
 
 Kardeşinizi pasta yapmaya ikna ettiğiniz yükseltmedir.
-
 Kardeşler, belli sürelerde sizin için otomatik olarak kek yapar.
 
-Fiyat artış miktarı: 200 + (kardes * 100)
+- Fiyat artış miktarı: 200 + (kardes * 100)
+  - (kardes = İkna ettiğiniz kardeş sayısı)
 
-(kardes = İkna ettiğiniz kardeş sayısı)
-
-# 💰 Vergi Yükseltmesi
+# Vergi Yükseltmesi
 
 Oyunda bir vergi sistemi bulunmaktadır.
-
 Daha fazla vergi ödeyerek, satılan keklerden alınan vergi oranını artırabilirsiniz.
 
-Fiyat artış miktarı: 500 + (vergiUpdate * 300)
+- Fiyat artış miktarı: 500 + (vergiUpdate * 300)
+  - (vergiUpdate = Aldığınız vergi yükseltmesi sayısı)
+- Vergi artış miktarı: +0.1
 
-(vergiUpdate = Aldığınız vergi yükseltmesi sayısı)
-
-Vergi artış miktarı: +0.1
-
-# 🍽️ Masa Yükseltmesi
+# Masa Yükseltmesi
 
 Oyuna 4 masa ile başlarsınız.
-
 Her yeni masa satın aldığınızda, müşteri kapasiteniz 4 artar.
 
-Fiyat artış miktarı: (10 * masa) / 2
+- Fiyat artış miktarı: (10 * masa) / 2
+  - (masa = Sahip olduğunuz toplam masa sayısı)
 
-(masa = Sahip olduğunuz toplam masa sayısı)
 
-Bu proje hala geliştirilmeye devam etmektedir.Geri bildirimleriniz ve önerileriniz için teşekkürler! 🎂
+Bu proje hala geliştirilmeye devam etmektedir.
 
 
 
