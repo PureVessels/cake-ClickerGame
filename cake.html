@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<html lang="tr">
+
+<!-- ayarla yani istatistik yapılcak-->
+<head>
+  <title>Pastaneci</title>
+  <link rel="stylesheet" href="site.css">
+</head>                    
+<body>
+  <div class="openTheGame" id="profile">
+    <div id="openTheGame">
+      <h1 class="center"> Pasta Clicker</h1>
+      <div class="nickName">
+        <h1>Pastane İsmi</h1>
+        <input id="pastaneName"style="background-color: blueviolet;" type="text" placeholder="Pastane ismini girin">
+        <button type="button" onclick="nickName()"> Oyuna Başla </button>
+        <p class="kirmizi gizli" id="nicknameHata"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ananMenu gizli" id="Gamethis">
+    <div class="menu-box kek-Menu">
+        <h1 class="PastaneName" id="pastaneIsmi"> name Pastane</h1>
+        <div class ="kekdiv">
+            <img onclick="kekPartisi()" class="kekGorsel"src="https://i.hizliresim.com/pps0mda.png">
+            <p id="kekim" class="kekNumbers arkaPlan"> 🍰0 </p>
+            <p class="kasa normalButton" id="kasaButton" onclick="welcomeKasa()"> 💸Kasa </p>
+        </div>
+        <h1 id="param" class="para">💰0TL </h1>
+    </div>
+    <div class="menu-box magaza-Menu">
+      <div class="gizli hata" id="error">
+        <p id="errorP">deneme </p>
+      </div>
+      <div class="magaza gizli" id="KasaMagaza">
+        <p class="x" onclick="welcomeKasa()"> X</p>
+        <h1 class="kasaX"> Kasa </h1>
+        <p class="sellKeks arkaPlan"onclick="sellKek()"> Kek Sat.</p>
+        <p class="musteri arkaPlan" id="MusteriNumber">👤0</p>
+      </div>
+      <div class="basarim gizli" id="basarimDiv">
+        <p id="basarimP">deneme </p>
+      </div>
+    </div>
+    <div class="menu-box upgrade-Menu">
+        <div class="upgrade" onclick="kitapUpgrade()"> 
+            <h1> Kitap</h1>
+            <p id="kitapSayisi">Okuduğun kitap sayısı: 0 </p>
+            <p id="kitapFiyati">Kitap alman için gereken para: 200 </p>
+        </div>
+        <hr>
+        <div class="upgrade" onclick="helpSister()"> 
+            <h1> Kardeşler</h1>
+            <p id="kardesSayisi">Sana yardım eden kardeş sayısı: 0 </p>
+            <p id="kardesFiyati">Kardeşini ikna etmen için gereken para: 200 </p>
+        </div>
+        <hr>
+        <div class="upgrade" onclick="vergiUpd()"> 
+            <h1> Vergi</h1>
+            <p id="vergiAlma">Aldığın vergi: 0 </p>
+            <p id="vergiFiyat">Vergiyi artırman için ödemen gereken vergi: 200kek </p>
+        </div>
+        <hr>
+        <div class="upgrade" onclick="masaUpgrade()"> 
+          <h1> Masa</h1>
+          <p id="masaNumber">Aldığın masa: 0 </p>
+          <p id="masaFiyat">4 kişilik masa alman için gereken para: 200 </p>
+      </div>
+    </div>
+  </div>
+
+  <!--
+
+  <div id="ProfileDiv">
+    <h2 style="text-align: center;">Profile</h2>
+    <hr>
+    <h2>Kardeşler</h2>
+    <ul>
+      <li id="kardesNumber"></li>
+      <li id="kardesMoney"></li>
+    </ul>
+    <hr>
+    <h2>Vergi</h2>
+    <ul>
+      <li id="vergiNumber"></li>
+      <li id="vergiOdeme"></li>
+    </ul>
+    <hr>
+    <h2>İstatistikler</h2>
+    <ul>
+      <li id="toplamKek"></li>
+      <li id="toplamSatilanKek"></li>
+      <li id="toplamPara"></li>
+    </ul>
+  </div>
+  -->
+  <script src="site.js"></script>
+</body>
+
+</html>
