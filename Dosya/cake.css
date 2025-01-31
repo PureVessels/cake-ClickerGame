@@ -1,5 +1,4 @@
 /* Menu */
-
   .menu-box{
     padding : 30px;
     background-color: blueviolet;
@@ -27,15 +26,37 @@
     width: 500px;
   }
 
-
-  .nickName {
-    margin-top: 200px;             /* Yukarıdan boşluk */
-    display: flex;                 /* Flexbox aktif */
-    flex-direction: column;        /* Elemanları dikey hizala */
-    justify-content: center;       /* Yatayda ortala */
-    align-items: center;           /* Dikeyde ortala */
-    gap: -10px;                     /* h1 ve input arasında boşluk */
+  .settings-Menu{
+    width: 495px;
+    height: 660px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    border: 5px solid white;
   }
+
+  .arkaPlan{
+    position: absolute;
+    background-color: #666666;
+    border:0;
+    border-radius: 8px;
+    font-size: 20px;
+  }
+
+  .magaza{
+    position: fixed;
+    position: sticky;
+    top: 160px;
+    padding: 1px;
+    height: 70%;  
+    margin : 0;
+    transform: translate(0%, 0);
+    width: 100%;
+    background-color: gray;
+    border: 5px solid black;
+    border-radius: 30px;
+  }
+
   .openTheGame{
     display: flex;
     justify-content: center; /* Yatayda ortala */
@@ -70,18 +91,15 @@
     background-color: blueviolet;
   }
 
-  .magaza{
-    position: fixed;
-    position: sticky;
-    top: 160px;
-    padding: 1px;
-    height: 70%;  
-    margin : 0;
-    transform: translate(0%, 0);
-    width: 100%;
-    background-color: gray;
-    border: 5px solid black;
-    border-radius: 30px;
+  /* */
+
+  .nickName {
+    margin-top: 200px;             /* Yukarıdan boşluk */
+    display: flex;                 /* Flexbox aktif */
+    flex-direction: column;        /* Elemanları dikey hizala */
+    justify-content: center;       /* Yatayda ortala */
+    align-items: center;           /* Dikeyde ortala */
+    gap: -10px;                     /* h1 ve input arasında boşluk */
   }
 
  .upgrade{
@@ -100,13 +118,6 @@
     text-align: center;
     background-color: #666666;
     /* Birgün eklemek Cookie Click arka plan rengi */
-  }
- .arkaPlan{
-    position: absolute;
-    background-color: #666666;
-    border:0;
-    border-radius: 8px;
-    font-size: 20px;
   }
 
   .kasaX{
@@ -169,6 +180,17 @@
     cursor: pointer;
   }
 
+  .ayarlarButton{
+    cursor: pointer;
+    float: left;
+    position: absolute;
+    background-color: #666666;
+    border:0;
+    border-radius: 8px;
+    font-size: 20px;
+    top: -5px;
+    left: 10px;
+  }
   /* Musteri */
 
   .hgMusteri{
@@ -253,6 +275,21 @@
     text-align: center;
     color: white;
   }
+
+  .basarimNickName{
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: green;
+    border: 3px solid white;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+  }
+
   .hata {
     background-color: red;
     border: 3px solid white;
