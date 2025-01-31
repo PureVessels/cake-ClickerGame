@@ -15,13 +15,17 @@
         <h1>Pastane İsmi</h1>
         <input id="pastaneName"style="background-color: blueviolet;" type="text" placeholder="Pastane ismini girin">
         <button type="button" onclick="nickName()"> Oyuna Başla </button>
-        <p class="kirmizi gizli" id="nicknameHata"></p>
+        <p class="hata gizli" id="nicknameHata"></p>
+        <div class="basarimNickName gizli" id="basarimNickName">
+          <p id="basarimNickNameP">deneme </p>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="ananMenu gizli" id="Gamethis">
     <div class="menu-box kek-Menu">
+        <p class="ayarlarButton arkaPlan" onclick="ayarlar()">⚙️</p>
         <h1 class="PastaneName" id="pastaneIsmi"> name Pastane</h1>
         <div class ="kekdiv">
             <img onclick="kekPartisi()" class="kekGorsel"src="https://i.hizliresim.com/pps0mda.png">
@@ -31,6 +35,19 @@
         <h1 id="param" class="para">💰0TL </h1>
     </div>
     <div class="menu-box magaza-Menu">
+      <div class="settings-Menu gizli" id="settings">
+        <h2 style="text-align: center;">Profile</h2>
+        <hr>
+        <h2>İstatistikler</h2>
+        <ul>
+          <li id="toplamKek"></li>
+          <li id="toplamSatilanKek"></li>
+          <li id="toplamPara"></li>
+          <li id="toplamMusteri"></li>
+          <li id="basarimSayisi"></li>
+        </ul>
+        <hr>
+      </div>
       <div class="gizli hata" id="error">
         <p id="errorP">deneme </p>
       </div>
@@ -70,32 +87,6 @@
       </div>
     </div>
   </div>
-
-  <!--
-
-  <div id="ProfileDiv">
-    <h2 style="text-align: center;">Profile</h2>
-    <hr>
-    <h2>Kardeşler</h2>
-    <ul>
-      <li id="kardesNumber"></li>
-      <li id="kardesMoney"></li>
-    </ul>
-    <hr>
-    <h2>Vergi</h2>
-    <ul>
-      <li id="vergiNumber"></li>
-      <li id="vergiOdeme"></li>
-    </ul>
-    <hr>
-    <h2>İstatistikler</h2>
-    <ul>
-      <li id="toplamKek"></li>
-      <li id="toplamSatilanKek"></li>
-      <li id="toplamPara"></li>
-    </ul>
-  </div>
-  -->
   <script src="site.js"></script>
 </body>
 
