@@ -4,6 +4,8 @@ let allSellKek = 0;
 let allMoney = 0;
 let allMusteri = 0;
 let nickNamePastanesi;
+let myNameis;
+let firstMusteri = "false";
 
 // İtemler
 let kek = 0;
@@ -17,6 +19,7 @@ let okunanKitapSayi = 0;
 let timeoutId = null;
 let openKasa = 'false';
 let durum = "false";
+let settingDurum = "false";
 
 // Yukseltmeler
 let kardes = 0;
@@ -32,16 +35,20 @@ let masaFiyat = 0;
 let kitapFiyat = 0;
 
 // Basarimlar
-let kitapUcretsizDegilmi = "false"; // Kitaplar hani ücretsizdi
-let VergiOduyorsun = "false"; // Vergini ödedin
-let SonsuzKardes = "false"; // Kaç tane kardeşim var?
-let sonsuzMasa = "false" // O kadar masayı napcan
-let kekYaptim = "false" // İlk kekin nasıldı
-let kekinKokusu = "false" // Kekin güzel kokuyor
-let whygoMusteri = "false" // Neden müşteriye bakmadın
-let oIsimNe = "false" // niye o kadar uzun ki
-let otuzDokuzNick = "fale" // Ötüz Döküz
-let otuzDokuzPara = "false" // Ötüz Döküz para
+let kitapUcretsizDegilmi = "false"; // Kitaplar hani ücretsizdi +
+let VergiOduyorsun = "false"; // Vergini ödedin +
+let SonsuzKardes = "false"; // Kaç tane kardeşim var? +
+let sonsuzMasa = "false" // O kadar masayı napcan +
+let kekYaptim = "false" // İlk kekin nasıldı +
+let kekinKokusu = "false" // Kekin güzel kokuyor +
+let whygoMusteri = "false" // Neden müşteriye bakmadın +
+let oIsimNe = "false" // niye o kadar uzun ki +
+let otuzDokuzNick = "fale" // Ötüz Döküz -
+let otuzDokuzPara = "false" // Ötüz Döküz para +
+let bosBasarim = "false" // İsmin Neden yok? +
+let tümBasarimSayisi = 11;
+let basarimSayisi = 0;
+
 
 // Sitem
 function cihaz() {
@@ -55,36 +62,68 @@ function cihaz() {
 }
 // cihaz();
 
-function basarim(name, description){
-  let basarimMesaj = name + ' <br>'
-  document.getElementById("basarimDiv").classList.remove("gizli");
-  document.getElementById("basarimP").innerHTML = basarimMesaj + description ;
-
+function basarim(name, description, konum){
+  let basarimMesaj = `${name} <br>`;
+  if(konum == "Game"){
+    document.getElementById("basarimDiv").classList.remove("gizli");
+    document.getElementById("basarimP").innerHTML = basarimMesaj + description
+  } else if(konum == "Profile"){
+    document.getElementById("basarimNickName").classList.remove("gizli");
+    document.getElementById("basarimNickNameP").innerHTML = basarimMesaj + description
+  }
+  basarimSayisi += 1;
+  
   setTimeout(() => {
     document.getElementById("basarimDiv").classList.add("gizli");
+    document.getElementById("basarimNickName").classList.add("gizli");
   }, 5000);
 }
 
 function nickName() {
-  const input = document.getElementById('pastaneName'); 
-  let  myNameis = input.value.replace("39", "ötüz döküz");
-  myNameis = myNameis.replace(/pastanesi|pastanem/gi, " ");
-  myNameis = myNameis.replace("Kürdistan", " ");
+  const input = document.getElementById('pastaneName');
+  myNameis = input.value;
+  myNameis = myNameis.replace(/pastanesi|pastanem|pastane/gi, " ");
   console.log(myNameis);
   const lenght = input.value.length; 
 
+  if(myNameis.includes("Kürdistan") && bosBasarim == "false"){
+    basarim(" ", " ", "Profile");
+    bosBasarim = "true";
+    document.getElementById("nicknameHata").classList.remove("gizli"); 
+
+    getinnerHTML("nicknameHata", "Pastanen ismin neden yok");
+
+    setTimeout(() => {
+      document.getElementById("nicknameHata").classList.add("gizli"); 
+    }, 5000);
+    return;
+  }
+
   if (lenght > 3 && lenght < 30) {
+    myNameis = myNameis.replace("Kürdistan", " ");
+    if(myNameis.includes("39") && bosBasarim == "false"){
+      myNameis = input.value.replace("39", "ötüz döküz");
+      basarim("Ötüz Döküz", "Ötüz Döküz", "Game");
+      bosBasarim = "true";
+    }
+
     nickNamePastanesi = myNameis + " Pastanesi";
     document.getElementById("profile").classList.add("gizli");
     document.getElementById("Gamethis").classList.remove("gizli");
 
     getinnerHTML("pastaneIsmi", nickNamePastanesi);
+    SisterHelp();
+    yenileme();
   } else {
     document.getElementById("nicknameHata").classList.remove("gizli"); 
     if (lenght <= 3) {
-      document.getElementById("nicknameHata").innerHTML = "Pastanen 3 harfli niye isteyesinki?"; 
+      getinnerHTML("nicknameHata", "Pastanen 3 harfli niye isteyesinki?");
     } else if (lenght > 30) {
-      document.getElementById("nicknameHata").innerHTML = "Nasıl isim öyle?"; 
+      getinnerHTML("nicknameHata", "Nasıl isim öyle?");
+      if(oIsimNe == "false"){
+        basarim("O isim ne", "İsmin neden bu kadar uzun", "Profile");
+        oIsimNe = "true";
+      }
     }
     setTimeout(() => {
       document.getElementById("nicknameHata").classList.add("gizli"); 
@@ -157,7 +196,12 @@ function sellKek() {
       rip("kek", satilanKek);
       para += kazanilanPara;
       allMoney += kazanilanPara;
-      
+      allSellKek += satilanKek;
+
+      if(para == 39 && otuzDokuzPara == "false"){
+        basarim("Ötüz Döküz", "Ötüz Döküz Para", "Game");
+        otuzDokuzPara = "true";
+      }
       
       yenileme();
     }
@@ -165,21 +209,11 @@ function sellKek() {
 }
 
 function profileUpdate() {
-  vergi = 0.8 * vergiUpdate;
-  kardesFiyat = 200 + kardes * 100;
-  document.getElementById("kardesNumber").innerHTML =
-    "Kardeş Sayısı: " + kardes;
-  document.getElementById("kardesMoney").innerHTML =
-    "Kardeş Çağırmak için gereken Para: " + kardesFiyat;
-  document.getElementById("vergiNumber").innerHTML = "Aldığın Vergi: " + vergi;
-  document.getElementById("vergiOdeme").innerHTML =
-    "Vergi yükseltmen için gereken kek sayısı: " + vergiUpdateFiyat;
-  document.getElementById("toplamKek").innerHTML =
-    "Toplam yaptığın kek: " + allKek;
-  document.getElementById("toplamSatilanKek").innerHTML =
-    "Toplam sattığın kek: " + allSellKek;
-  document.getElementById("toplamPara").innerHTML =
-    "Toplam kazandığın para: " + allMoney;
+  getinnerHTML("toplamKek", "Toplam yaptığın kek: " + allKek)
+  getinnerHTML("toplamSatilanKek", "Toplam sattığın kek: " + allSellKek)
+  getinnerHTML("toplamPara", "Toplam kazandığın para: " + allMoney)
+  getinnerHTML("toplamMusteri", "Toplam müşteri sayısı: " + allMusteri)
+  getinnerHTML("basarimSayisi", "Başarım Sayısı: " + basarimSayisi + "/" + tümBasarimSayisi + " %" + Math.trunc((100 * basarimSayisi)/tümBasarimSayisi) + " Tamamlandı")
 }
 function hata(hataMesaji) {
   let redError = 'HATA! <br>'
@@ -192,9 +226,9 @@ function hata(hataMesaji) {
 }
 
 function kekPartisi() {
-  if(openKasa == 'false'){
+  if(openKasa == 'false' && settingDurum == "false"){
     if(kekYaptim == "false"){
-      basarim("Kek Yaptın", "İlk kekin nasıldı");
+      basarim("Kek Yaptın", "İlk kekin nasıldı", "Game");
       kekYaptim = "true"
     }
     let kekPARTİSİ = 1 + ustalik;
@@ -213,25 +247,45 @@ function SisterHelp() {
 }
 
 function welcomeKasa(){
-  if(durum == "false"){
-    durum = "true";
-    openKasa = 'true';
-    document.getElementById("KasaMagaza").classList.remove("gizli");
-  } else if(durum == "true"){
-    durum = "false";
-    openKasa = 'false';
-    document.getElementById("KasaMagaza").classList.add("gizli");
+  if(settingDurum == "false"){
+    if(durum == "false"){
+      durum = "true";
+      openKasa = 'true';
+      document.getElementById("KasaMagaza").classList.remove("gizli");
+    } else if(durum == "true"){
+      durum = "false";
+      openKasa = 'false';
+      document.getElementById("KasaMagaza").classList.add("gizli");
+    }
   }
 }
 
+function ayarlar(){
+  if(settingDurum == "false"){
+    settingDurum = "true";
+    document.getElementById("settings").classList.remove("gizli");
+    profileUpdate();
+  } else if(settingDurum == "true"){
+    settingDurum = "false";
+    document.getElementById("settings").classList.add("gizli");
+  }
+}
 
 // Upgrade 
 
 function helpSister() {
+  if(settingDurum != "false"){
+    return;
+  }
+
   kardesFiyat = 200 + kardes * 100;
   if (para >= kardesFiyat) {
     rip("para", kardesFiyat);
     kardes += 1;
+    if(kardes == 300 && SonsuzKardes == "false" , "Game"){
+      basarim("Kaç tane kardeşim var?", "Kardeşlerin sonsuz");
+      SonsuzKardes = "true";
+    }
     updates();
   } else {
     hata("Paranız Yetersiz. Gereken para: " + kardesFiyat);
@@ -239,11 +293,20 @@ function helpSister() {
 }
 
 function vergiUpd() {
+  if(settingDurum != "false"){
+    return;
+  }
+
   vergiUpdateFiyat = 500 + vergiUpdate * 300;
   if (kek >= vergiUpdateFiyat) {
     vergiUpdate += 1;
     vergiArtis += 0.1;
     rip("kek", vergiUpdateFiyat);
+
+    if(VergiOduyorsun == "false"){  
+      basarim("Vergi Ödedin", "Vergini ödüyorsun", "Game");
+      VergiOduyorsun = "true";
+    }
   } else {
     hata(
       "Kekiniz yetersiz. Ödemen gereken verginin kek miktarı: " +vergiUpdateFiyat
@@ -252,9 +315,18 @@ function vergiUpd() {
 }
 
 function masaUpgrade(){
+  if(settingDurum != "false"){
+    return;
+  }
+
+
   masaFiyat = (10 * masa ) / 2
   if(para >= masaFiyat){
     masa += 4;
+    if(masa == 500 && sonsuzMasa == "false"){
+      basarim("Masa Sayısı", "O kadar masayı napcan", "Game");
+      sonsuzMasa = "true";
+    }
     rip("para", masaFiyat);
   } else {
     hata(
@@ -264,6 +336,14 @@ function masaUpgrade(){
 }
 
 function kitapUpgrade(){
+  if(settingDurum != "false"){
+    return;
+  }
+
+  if(kitapUcretsizDegilmi == "false"){
+    basarim("Kitaplar Ücretsiz Değilmi?", "Kitaplar hani ücretsizdi", "Game");
+    kitapUcretsizDegilmi = "true";
+  }
   kitapFiyat = 20 + (20 * okunanKitapSayi)
   if(para >= kitapFiyat){
     okunanKitapSayi += 1;
@@ -283,6 +363,16 @@ function kitapUpgrade(){
 
 function musteriNumber(){
   if (Math.random() < 0.5) {
+      if(kekinKokusu == "false"){
+        basarim("Kekin Kokusu", "Kekin güzel kokuyor", "Game");
+        kekinKokusu = "true";
+      }
+
+      if(firstMusteri == "false"){
+        firstMusteri = "true";
+        byMusteri();
+      }
+
       if(musteri <= masa ){
       let newMusteri = Math.floor(Math.random() * (masa - 1 + 1)) + 1;
       if(newMusteri % 4 == 0){
@@ -303,19 +393,33 @@ function musteriNumber(){
 
 function byMusteri(){
   setTimeout(() => {
+
     if(musteri != 0){
+      if(settingDurum != "false"){
+        return;
+      }
+
       if(aile != 0){
         musteri -= 4
         aile -= 1;
+        forMusteri();
       } else{
         musteri -=1;
+        forMusteri();
       }
-      document.getElementById("kasaButton").classList.remove("normalButton");
-      document.getElementById("kasaButton").classList.add("byMusteri");
       kasaButtonRenk("byMusteri");
+      if(whygoMusteri == "false"){
+        basarim("Sinirli Müşteri", "Müşteriye bakmadın", "Game");
+        whygoMusteri = "true";
+      }
     }
     byMusteri();
   }, 8000);
+}
+
+function forMusteri(){
+  document.getElementById("kasaButton").classList.remove("normalButton");
+  document.getElementById("kasaButton").classList.add("byMusteri");
 }
 
 function kasaButtonRenk(id){
@@ -336,9 +440,3 @@ function temizleme(){
   document.getElementById("kasaButton").classList.remove("hgAile");
   document.getElementById("kasaButton").classList.remove("byMusteri");
 }
-
-//
-
-SisterHelp();
-yenileme();
-byMusteri();
