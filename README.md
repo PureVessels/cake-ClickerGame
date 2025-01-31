@@ -3,7 +3,7 @@
 Bu oyun bir tıklama oyunudur ve her tıkladığınızda kek yaparsınız!Yaptığınız kekleri satabilir veya biriktirebilirsiniz.Oyunun bir sonu yoktur ve sürekli geliştirilmeye devam edilmektedir.
 
 Bu projede HTML, CSS ve JavaScript kullanılmıştır.
-Bakmak için: https://purevessels.github.io/cake-ClickerGame/
+Bakmak için: https://purevessels.github.io/cake-ClickerGame/index.html
 
 #  Oyun Mekanikleri
 
