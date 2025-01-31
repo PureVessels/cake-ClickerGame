@@ -58,6 +58,17 @@ function cihaz() {
   }
 }
 
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    if (ayarDurumu == "true") {
+      ayarlar();
+    } else if (kasaAcik == 'true') {
+      welcomeKasa();
+    }
+  }
+});
+
+
 function basarim(name, description, konum) {
   let basarimMesaj = `${name} <br>`;
   if (konum == "Game") {
@@ -427,13 +438,3 @@ function temizleme() {
 SisterHelp();
 yenileme();
 byMusteri();
-
-document.addEventListener("keydown", function(event) {
-  if (event.key === "Escape") {
-    if (ayarDurumu == "true") {
-      ayarlar();
-    } else if (kasaAcik == 'true') {
-      welcomeKasa();
-    }
-  }
-});
